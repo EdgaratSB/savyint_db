@@ -1,0 +1,75 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Create User {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  <main class="c-main">
+    <div class="container-fluid">
+      <div class="fade-in">
+        <div class="card">
+          <div class="card-header">{{ title }}</div>
+          <div class="card-body">
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  <p class="flashes"> {{ message }}</p>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+            <form action="" method="post">
+
+              {{ form.hidden_tag() }}
+              {{ form.csrf_token }}
+
+              <div class ="input-group mb-3">
+                <div class="input-group-prepend"><span class="input-group-text">
+                  <svg class="c-icon">
+                      <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                    </svg>
+                    </span></div>
+                    {{ form.username(placeholder="Username", class="form-control") }}
+              </div>
+              <div class ="input-group mb-3">
+                <div class="input-group-prepend"><span class="input-group-text">
+                  <svg class="c-icon">
+                      <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-at"></use>
+                    </svg>
+                    </span></div>
+                    {{ form.email(placeholder="email", class="form-control") }}
+              </div>
+              <div class ="input-group mb-3">
+                <div class="input-group-prepend"><span class="input-group-text">
+                  <svg class="c-icon">
+                      <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                    </svg>
+                    </span></div>
+                    {{ form.first_name(placeholder="First Name", class="form-control") }}
+              </div>
+              <div class ="input-group mb-3">
+                <div class="input-group-prepend"><span class="input-group-text">
+                  <svg class="c-icon">
+                      <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                    </svg>
+                    </span></div>
+                    {{ form.last_name(placeholder="Last Name", class="form-control") }}
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <button type="submit" name="send" class="btn btn-primary px-4">Send</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
